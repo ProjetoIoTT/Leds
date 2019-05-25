@@ -1,0 +1,27 @@
+#biblioteca para acessar as portas GPIO do raspberry
+import RPi.GPIO as gpio
+import time #temporizador
+
+gpio.setmode(gpio.BOARD) #numeração gpio utilizada
+#define as portas que serão utilizadas
+gpio.setup(37, gpio.OUT)
+gpio.setup(33, gpio.OUT)
+gpio.setup(29, gpio.OUT)
+for x in range(5):#quantidade de vezes que vai rodar
+    gpio.output(37, gpio.HIGH)#acende o led 1
+    gpio.output(33, gpio.LOW) #apaga o led 2 
+    gpio.output(29, gpio.LOW) #apaga o led 3
+    time.sleep(4)#tempo que o led vai ficar aceso
+    gpio.output(37, gpio.LOW)#apaga o led 1
+    gpio.output(33, gpio.LOW) #apaga o led 2
+    gpio.output(29, gpio.HIGH)#acende o led 3
+    time.sleep(4) #tempo que o led vai ficar aceso
+    gpio.output(37, gpio.LOW)#apaga o led 1
+    gpio.output(33, gpio.HIGH)#acende o led 2
+    gpio.output(29, gpio.LOW)#apaga o led 3
+    time.sleep(4)#tempo que o led vai ficar aceso
+gpio.output(37, gpio.LOW)
+gpio.output(33, gpio.LOW)
+gpio.output(29, gpio.LOW)
+    
+gpio.cleanup()#limpar as portas que foram utilizadas
