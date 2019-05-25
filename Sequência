@@ -1,0 +1,45 @@
+#Biblioteca  para acessar as portas GPIO do raspberry
+import RPi.GPIO as gpio
+import time #temporizador
+
+gpio.setmode(gpio.BOARD)#Acesso a numeração board
+#variaveis constantes para definir as portas 
+led_red = 37
+led_yellow = 33
+led_green = 29
+#Define as portas de saida
+gpio.setup(led_red, gpio.OUT)
+gpio.setup(led_yellow, gpio.OUT)
+gpio.setup(led_green, gpio.OUT)
+print('Led vermelho: digite 1')
+print('Led amarelo: digite 2')
+print('Led verde: digite 3')
+
+list_seq = []
+#Quantidade de interações do programa
+num = int(input('Digite um número: '))
+for quant in range(num):
+    led = int(input('Digite o {}° led a acender: '.format(quant+1)))
+    list_seq.append(led)#Adiciona o led à lista
+    
+#Verifica a correspondência dos LEDS
+for led_corresp in list_seq:
+    
+    if led_corresp == 1:
+        gpio.output(led_red, gpio.HIGH)#Acende o led 1
+        time.sleep(1)#Tempo de duração
+        gpio.output(led_red, gpio.LOW)#Apaga o led
+        
+        
+    elif led_corresp == 2:
+        gpio.output(led_yellow, gpio.HIGH)#Acende o led 2
+        time.sleep(1)#Tempo de duração
+        gpio.output(led_yellow, gpio.LOW)#Apaga o led
+        
+        
+    elif led_corresp == 3:
+        gpio.output(led_green, gpio.HIGH)#Acende o led 3
+        time.sleep(1)#Tempo de duração
+        gpio.output(led_green, gpio.LOW)#Apaga o led
+        
+gpio.cleanup()#Limpa as portas do raspberry que foram utilizadas
