@@ -1,0 +1,10 @@
+import RPi.GPIO as gpio
+from gpiozero import LightSensor
+import time
+gpio.setmode(gpio.BOARD)
+gpio.setup(29, gpio.OUT)
+ldr = LightSensor(29)
+for x in range(10):
+        gpio.output(29, gpio.HIGH)
+        print(ldr.value)
+        gpio.cleanup()
