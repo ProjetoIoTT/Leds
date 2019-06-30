@@ -1,0 +1,37 @@
+import RPi.GPIO as gpio #Importa a biblioteca para acessar as portas do raspberry
+import time #Importa o temporizador
+
+gpio.setmode(gpio.BOARD) #Escolha da numeração board
+#Define as portas do raspberry
+gpio.setup(37, gpio.OUT)
+gpio.setup(33, gpio.OUT)
+gpio.setup(29, gpio.OUT)
+
+print("Digite 1 para o vermelho")
+print("Digite 2 para o amarelo")
+print("Digite 3 para o verde")
+
+escolha = int(input("Qual LED deseja acender? "))
+tempo = int(input("Quanto tempo o LED ficará aceso(em segundos)? "))
+
+if escolha == 1:
+    gpio.output(37, gpio.HIGH)#Acende o Led
+    time.sleep(tempo)#Tempo que o Led ficará aceso
+    gpio.output(37, gpio.LOW)#Apaga o Led
+    gpio.cleanup()#Limpa as portas do raspberry
+    
+elif escolha == 2:
+    gpio.output(33, gpio.HIGH)#Acende o Led
+    time.sleep(tempo)#Tempo que o Led ficará aceso
+    gpio.output(33, gpio.LOW)#Apaga o Led
+    gpio.cleanup()#Limpa as portas do raspberry
+    
+elif escolha == 3:
+    gpio.output(29, gpio.HIGH)#Acende o Led
+    time.sleep(tempo)#Tempo que o Led ficará aceso
+    gpio.output(29, gpio.LOW)#Apaga o Led
+    gpio.cleanup()#Limpa as portas do raspberry
+    
+else:
+    print("Não há LED correspondente")
+    
