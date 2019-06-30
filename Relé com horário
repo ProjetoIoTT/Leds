@@ -1,0 +1,21 @@
+import json
+
+import time
+import RPi.GPIO as gpio
+gpio.setmode(gpio.BOARD)
+gpio.setup(37, gpio.OUT)
+
+gpio.output(37, gpio.HIGH)
+
+agenda = json.load(open('../leds_acionamento.json'))
+
+led_red = agenda[0]
+red_on = led_red.get('On_red')
+red_off = led_red.get('Off_red')
+
+
+while True:
+    if red_on[0] == time.strftime('%H:%M'):
+        gpio.output(37, gpio.LOW)
+    elif red_off[0] == time.strftime('%H:%M'):
+        gpio.output(37, gpio.HIGH)
