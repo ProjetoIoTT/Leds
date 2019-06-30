@@ -1,0 +1,12 @@
+import json
+led_red = {'On_red': '[01:00, 01:03]',
+           'Off_red':'[01:02, 01:04]'}
+
+led_green = {'On_grenn': '[01:04, 01:06]',
+             'Off_grenn':'[01:05, 01:07]'}
+
+led_yellow = {'On_yellow': '[01:07, 01:09]',
+              'Off_yellow':'[01:08, 01:10]'}
+
+with open('../leds_acionamento.json', 'w') as criar:
+    json.dump((led_red, led_green, led_yellow), criar)
