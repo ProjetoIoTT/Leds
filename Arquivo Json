@@ -1,0 +1,3 @@
+hora_ligar = {"led_red": "11:00",
+              "led_green": "11:05",
+              "led_yellow": "11:10"}
