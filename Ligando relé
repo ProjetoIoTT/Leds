@@ -1,0 +1,14 @@
+import RPi.GPIO as gpio
+import time
+gpio.setmode(gpio.BOARD)
+gpio.setup(37, gpio.OUT)
+
+for rodada in range(3):
+    gpio.output(37, gpio.LOW)
+    print('RELÉ LIGADO')
+    time.sleep(3)
+    gpio.output(37, gpio.HIGH)
+    print('RELÉ DESLIGADO')
+    time.sleep(3)
+print('Programa encerrado')
+
